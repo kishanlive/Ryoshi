@@ -179,36 +179,50 @@
 <body>
     <div class="container">
         <h1>🔒 Privacy Policy</h1>
-        <p class="subtitle">Last Updated: February 3, 2026</p>
+        <p class="subtitle">Last Updated: November 11, 2026</p>
 
         <h2>1. Introduction</h2>
-        <p>This Privacy Policy explains how Ryoshi ("the Bot", "we", "us") collects, uses, and protects your information
-            when you use our Discord bot services.</p>
+        <p>This Privacy Policy explains how Ryoshi ("the Bot", "we", "us") collects, processes, and protects your information
+            when you use our Discord bot services. We are fully committed to protecting user privacy and strictly adhering to the 
+            <a href="https://discord.com/developers/docs/policies-and-agreements/developer-policy" target="_blank">Discord Developer Policy</a> and 
+            <a href="https://discord.com/terms" target="_blank">Discord Terms of Service</a>.</p>
 
-        <h2>2. Information We Collect</h2>
+        <h2>2. Information We Collect and Process</h2>
 
         <h3>2.1 Automatically Collected Data</h3>
         <ul>
-            <li><strong>User IDs:</strong> Discord user IDs for command execution and preferences</li>
-            <li><strong>Server IDs:</strong> Discord server (guild) IDs for server-specific settings</li>
-            <li><strong>Channel IDs:</strong> Voice and text channel IDs for music playback</li>
-            <li><strong>Command Usage:</strong> Commands used to improve service quality</li>
+            <li><strong>User IDs:</strong> Discord Snowflake user IDs for executing playback commands and managing personal playlists.</li>
+            <li><strong>Server IDs:</strong> Discord Snowflake server (guild) IDs to persist server-specific preferences (such as custom prefixes, theme colors, and request channels).</li>
+            <li><strong>Channel IDs:</strong> Voice and text channel IDs to stream requested audio and send playback embeds.</li>
+            <li><strong>Command Usage & Interaction Data:</strong> Button interaction and command timestamps used strictly to diagnose technical faults and maintain uptime.</li>
         </ul>
 
         <h3>2.2 User-Provided Data</h3>
         <ul>
-            <li><strong>Playlists:</strong> Song titles and URLs you save to personal playlists</li>
-            <li><strong>Preferences:</strong> Bot settings (prefix, theme color, autoplay mode)</li>
-            <li><strong>Search Queries:</strong> Song names or links you search for</li>
+            <li><strong>Saved Playlists:</strong> Custom playlist names and track URLs voluntarily saved by users via playlist commands (e.g. <code>/playlist create</code>).</li>
+            <li><strong>Server Configurations:</strong> Custom server settings configured by server administrators (custom prefix, default volume, autoplay, song-request channel ID).</li>
+            <li><strong>Search Queries:</strong> Track titles or URLs submitted for real-time music search.</li>
         </ul>
 
-        <h3>2.3 Data We Do NOT Collect</h3>
+        <h3>2.3 Discord Gateway Intents & Message Content</h3>
+        <div class="highlight">
+            <p><strong>Privileged Gateway Intent Disclosure:</strong> Ryoshi requests Discord's <strong>Message Content Intent</strong> solely to enable real-time music playback features. We handle all message data strictly in accordance with Discord's Privileged Intent guidelines:</p>
+            <ul style="margin-top: 10px; margin-bottom: 0;">
+                <li><strong>Dedicated Song-Request Channel:</strong> When a server administrator configures a dedicated request channel via <code>/setup</code>, members can type song names or paste media links directly into chat. Ryoshi reads the message content solely in-memory to extract the audio search query, queues the requested song, and immediately triggers Discord API message deletion to keep the text channel clean.</li>
+                <li><strong>In-Chat Prefix Commands:</strong> For servers and mobile users utilizing text prefix commands (e.g., <code>.play &lt;query&gt;</code>, <code>.skip</code>, <code>.queue</code>), message content is parsed strictly in-memory to match recognized bot commands.</li>
+                <li><strong>Strict Ephemeral Processing:</strong> Message content is processed in volatile memory (RAM) in real time and is <strong>never logged, never saved to persistent storage or databases, and never transmitted off-platform</strong>.</li>
+                <li><strong>No Machine Learning or AI Training:</strong> Message content is <strong>NEVER</strong> used to train artificial intelligence (AI), machine learning (ML), or language models.</li>
+                <li><strong>No Private Messages or General Chat Monitoring:</strong> Ryoshi never reads, logs, or intercepts direct messages (DMs) or general server conversation unrelated to bot commands.</li>
+            </ul>
+        </div>
+
+        <h3>2.4 Data We Do NOT Collect or Store</h3>
         <ul>
-            <li>Message content (except direct bot commands)</li>
-            <li>Private conversations</li>
-            <li>Voice recordings or audio data</li>
-            <li>Personal identifiable information (email, location, etc.)</li>
-            <li>Payment or financial information</li>
+            <li>Message content (outside the ephemeral in-memory command parsing described above)</li>
+            <li>Voice recordings, spoken audio, or microphone streams (voice gateway is strictly one-way transmit for audio output)</li>
+            <li>Private user chat logs or personal communications</li>
+            <li>Personally Identifiable Information (real names, physical addresses, IP addresses, email addresses)</li>
+            <li>Financial, billing, or payment data</li>
         </ul>
 
         <h2>3. How We Use Your Information</h2>
@@ -249,30 +263,33 @@
         <h3>5.1 Music Sources</h3>
         <p>The Bot uses:</p>
         <ul>
-            <li><strong>YouTube:</strong> For music streaming (subject to YouTube's Privacy Policy)</li>
-            <li><strong>Spotify:</strong> For playlist import (subject to Spotify's Privacy Policy)</li>
-            <li><strong>Lavalink:</strong> For audio processing (open-source, self-hosted)</li>
+            <li><strong>YouTube:</strong> For music resolution and playback (subject to YouTube's Privacy Policy)</li>
+            <li><strong>Spotify:</strong> For track/album/playlist metadata retrieval (subject to Spotify's Privacy Policy)</li>
+            <li><strong>SoundCloud, Apple Music & Deezer:</strong> For audio streaming and track resolution (subject to their respective Privacy Policies)</li>
+            <li><strong>Lavalink:</strong> High-performance self-hosted audio streaming server</li>
         </ul>
 
         <h3>5.2 Data Sharing</h3>
         <p>We do NOT:</p>
         <ul>
-            <li>Sell your data to third parties</li>
-            <li>Share personal information with advertisers</li>
-            <li>Use data for marketing purposes</li>
+            <li>Sell, monetize, or broker user data to third parties</li>
+            <li>Share personal information or server data with advertisers</li>
+            <li>Use user data or message content to train machine learning or AI models</li>
+            <li>Retain or distribute chat messages or voice streams</li>
         </ul>
-        <p>We MAY share data:</p>
+        <p>We MAY share data only:</p>
         <ul>
-            <li>If required by law or legal process</li>
-            <li>To protect our rights or safety</li>
+            <li>If strictly required by law, subpoena, or legal process</li>
+            <li>To protect our legal rights, infrastructure security, or safety</li>
         </ul>
 
-        <h2>6. Your Rights and Choices</h2>
-        <p>You have the right to:</p>
+        <h2>6. Your Rights, Choices & Opt-Out</h2>
+        <p>You have complete control over your data:</p>
         <ul>
-            <li><strong>Access:</strong> View your saved playlists using <code>/myplaylist</code></li>
-            <li><strong>Delete:</strong> Remove playlists using <code>/delete_playlist</code></li>
-            <li><strong>Opt-Out:</strong> Remove the Bot from your server to stop data collection</li>
+            <li><strong>Access:</strong> View your saved playlists at any time using <code>/myplaylist</code></li>
+            <li><strong>Delete:</strong> Permanently delete your saved playlists with <code>/delete_playlist</code></li>
+            <li><strong>Message Content Opt-Out:</strong> Users and servers who prefer not to use Message Content can use Discord's native Slash Commands exclusively (e.g. <code>/play</code>) and avoid configuring a dedicated song-request channel. Message content is never tracked, stored, or logged under any circumstance.</li>
+            <li><strong>Complete Data Erasure:</strong> Removing the Bot from your Discord server or requesting data deletion via our support server completely erases all server-associated configuration data.</li>
         </ul>
 
         <h2>7. Children's Privacy</h2>
@@ -284,40 +301,39 @@
 
         <h2>8. Changes to Privacy Policy</h2>
         <ul>
-            <li>We may update this policy periodically</li>
+            <li>We may update this policy periodically to reflect feature additions or Discord policy updates</li>
             <li>Continued use of the Bot constitutes acceptance of changes</li>
-            <li>Major changes will be announced in our support server</li>
+            <li>Major changes will be announced in our official support server</li>
         </ul>
 
-        <h2>9. Discord's Privacy Policy</h2>
-        <p>Users are also subject to:</p>
+        <h2>9. Discord's Developer Terms & Privacy Policy</h2>
+        <p>Ryoshi operates on the Discord platform. Users and bot operators are also subject to:</p>
         <ul>
-            <li><a href="https://discord.com/privacy" target="_blank">Discord's Privacy Policy</a></li>
-            <li>Discord's data collection and usage practices</li>
+            <li><a href="https://discord.com/privacy" target="_blank">Discord Privacy Policy</a></li>
+            <li><a href="https://discord.com/terms" target="_blank">Discord Terms of Service</a></li>
+            <li><a href="https://discord.com/developers/docs/policies-and-agreements/developer-policy" target="_blank">Discord Developer Policy</a></li>
         </ul>
 
-        <h2>10. Contact Us</h2>
-        <p>For privacy concerns or data requests:</p>
+        <h2>10. Contact Us & Support</h2>
+        <p>For privacy inquiries, technical support, or data erasure requests:</p>
         <ul>
-            <li>Join our support server: <a href="https://discord.gg/ZPyHHV9aGf"
-                    target="_blank">https://discord.gg/ZPyHHV9aGf</a></li>
-            <li>Use <code>/support</code> command in Discord</li>
+            <li>Support Server: <a href="https://discord.gg/YYhQjmAvx5" target="_blank">https://discord.gg/YYhQjmAvx5</a> (or <a href="https://discord.gg/ZPyHHV9aGf" target="_blank">https://discord.gg/ZPyHHV9aGf</a>)</li>
+            <li>Use the <code>/report</code> or <code>/help</code> command directly in Discord</li>
         </ul>
 
         <h2>11. Your Consent</h2>
-        <p>By using Ryoshi, you consent to:</p>
+        <p>By inviting or using Ryoshi in your Discord server, you consent to:</p>
         <ul>
-            <li>This Privacy Policy</li>
-            <li>Our data collection and usage practices</li>
-            <li>Processing of your data as described</li>
+            <li>This Privacy Policy and our minimal data processing practices</li>
+            <li>The processing of your data strictly as described herein</li>
         </ul>
 
         <div class="summary-box">
-            <h3>📋 Quick Summary</h3>
-            <p><strong>What We Collect:</strong> User/Server IDs, playlists, bot preferences</p>
-            <p><strong>What We DON'T Collect:</strong> Messages, voice data, personal info, payment details</p>
-            <p><strong>How We Use It:</strong> Provide music functionality, save your settings</p>
-            <p><strong>Your Rights:</strong> Access, delete, and control your data anytime</p>
+            <h3>📋 Quick Privacy Summary</h3>
+            <p><strong>What We Store:</strong> Minimal Discord IDs (User/Server/Channel) for playback functionality, server settings, and custom playlists.</p>
+            <p><strong>Message Content Intent:</strong> Used solely in-memory in dedicated request channels & for prefix commands. Messages are NEVER saved, NEVER logged, NEVER stored off-platform, and NEVER used for AI/ML training.</p>
+            <p><strong>What We NEVER Collect:</strong> Voice recordings, private messages, personal identifying details, financial information.</p>
+            <p><strong>Your Control:</strong> Delete playlists anytime with <code>/delete_playlist</code>, opt-out anytime by using slash commands, or remove the bot to wipe server settings.</p>
         </div>
 
         <div class="highlight">
